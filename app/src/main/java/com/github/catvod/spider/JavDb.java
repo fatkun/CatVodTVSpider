@@ -40,8 +40,15 @@ public class JavDb extends Spider {
     public String homeContent(boolean z) {
         try {
             JSONArray classes = new JSONArray();
-            String[] fenleis = "全部&有玛&无玛&欧美".split("&");
-            String[] fenleisval = "/&/censored&/uncensored&/western".split("&");
+            String[] fenleis = new String[] {"全部", "有码", "无码", "欧美",
+                    "有码周榜",
+                    "无码周榜"};
+            String[] fenleisval = new String[] {"/", "/censored", "/uncensored", "/western",
+                    "/rankings/movies?p=weekly&t=censored",
+                    "/rankings/movies?p=weekly&t=uncensored",
+            };
+            //String[] fenleis = "全部&有玛&无玛&欧美&有玛周榜".split("&");
+            //String[] fenleisval = "/&/censored&/uncensored&/western&/rankings/movies?p=weekly&t=censored".split("&");
             for (int i = 0; i < fenleis.length; i++) {
                 JSONObject fenjson = new JSONObject();
                 fenjson.put("type_id", fenleisval[i]);
@@ -78,7 +85,8 @@ public class JavDb extends Spider {
                 Elements lists = doc.select("div#magnets-content div.item");
                 for (int i = 0; i < lists.size(); i++) {
                   Element vod = lists.get(i);
-                  String title = vod.select("a").text();
+                  //String title = vod.select("a").text();
+                  String title = vod.select("a span.meta").text() + " " + vod.select("a span.name").text();
                   String link = vod.select("a").attr("href");
                   JSONObject v = new JSONObject();
                   v.put("vod_tag", "file");
