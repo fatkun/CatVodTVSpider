@@ -1,26 +1,22 @@
 package com.github.catvod.spider;
 
 import android.content.Context;
-
 import com.github.catvod.crawler.Spider;
 import com.github.catvod.crawler.SpiderDebug;
 import com.github.catvod.net.OkHttp;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class JavDb extends Spider {
 
-    private static String siteUrl = "https://javdb521.com";
+    private static String siteUrl = "https://javdb524.com";
     @Override
     public void init(Context context, String extend) {
         super.init(context, extend);
